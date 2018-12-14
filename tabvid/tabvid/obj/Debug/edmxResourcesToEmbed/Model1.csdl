@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="CustID" />
+    </Key>
+    <Property Name="CustID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="RentedMovies" Relationship="Self.FK_RentedMovies_Customer" FromRole="Customer" ToRole="RentedMovies" />
+  </EntityType>
+  <EntityType Name="Movy">
+    <Key>
+      <PropertyRef Name="MovieID" />
+    </Key>
+    <Property Name="MovieID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Rating" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Title" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Year" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Rental_Cost" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Copies" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Plot" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Genre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="RentedMovies" Relationship="Self.FK_RentedMovies_Movies" FromRole="Movies" ToRole="RentedMovies" />
+  </EntityType>
+  <EntityType Name="RentedMovy">
+    <Key>
+      <PropertyRef Name="RMID" />
+    </Key>
+    <Property Name="RMID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MovieIDFK" Type="Int32" />
+    <Property Name="CustIDFK" Type="Int32" />
+    <Property Name="DateRented" Type="DateTime" Precision="3" />
+    <Property Name="DateReturned" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK_RentedMovies_Customer" FromRole="RentedMovies" ToRole="Customer" />
+    <NavigationProperty Name="Movy" Relationship="Self.FK_RentedMovies_Movies" FromRole="RentedMovies" ToRole="Movies" />
+  </EntityType>
+  <Association Name="FK_RentedMovies_Customer">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+    <End Role="RentedMovies" Type="Self.RentedMovy" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="CustID" />
+      </Principal>
+      <Dependent Role="RentedMovies">
+        <PropertyRef Name="CustIDFK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RentedMovies_Movies">
+    <End Role="Movies" Type="Self.Movy" Multiplicity="0..1" />
+    <End Role="RentedMovies" Type="Self.RentedMovy" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Movies">
+        <PropertyRef Name="MovieID" />
+      </Principal>
+      <Dependent Role="RentedMovies">
+        <PropertyRef Name="MovieIDFK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Customers" EntityType="Self.Customer" />
+    <EntitySet Name="Movies" EntityType="Self.Movy" />
+    <EntitySet Name="RentedMovies" EntityType="Self.RentedMovy" />
+    <AssociationSet Name="FK_RentedMovies_Customer" Association="Self.FK_RentedMovies_Customer">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="RentedMovies" EntitySet="RentedMovies" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RentedMovies_Movies" Association="Self.FK_RentedMovies_Movies">
+      <End Role="Movies" EntitySet="Movies" />
+      <End Role="RentedMovies" EntitySet="RentedMovies" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

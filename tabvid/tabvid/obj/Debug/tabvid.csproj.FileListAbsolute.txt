@@ -1,0 +1,15 @@
+C:\Users\Admin\source\repos\tabvid\tabvid\obj\Debug\tabvid.csprojAssemblyReference.cache
+C:\Users\Admin\source\repos\tabvid\tabvid\obj\Debug\tabvid.Form1.resources
+C:\Users\Admin\source\repos\tabvid\tabvid\obj\Debug\tabvid.Properties.Resources.resources
+C:\Users\Admin\source\repos\tabvid\tabvid\obj\Debug\tabvid.csproj.GenerateResource.cache
+C:\Users\Admin\source\repos\tabvid\tabvid\obj\Debug\tabvid.csproj.CoreCompileInputs.cache
+C:\Users\Admin\source\repos\tabvid\tabvid\bin\Debug\tabvid.exe.config
+C:\Users\Admin\source\repos\tabvid\tabvid\bin\Debug\tabvid.exe
+C:\Users\Admin\source\repos\tabvid\tabvid\bin\Debug\tabvid.pdb
+C:\Users\Admin\source\repos\tabvid\tabvid\obj\Debug\tabvid.exe
+C:\Users\Admin\source\repos\tabvid\tabvid\obj\Debug\tabvid.pdb
+C:\Users\Admin\source\repos\tabvid\tabvid\bin\Debug\EntityFramework.dll
+C:\Users\Admin\source\repos\tabvid\tabvid\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Admin\source\repos\tabvid\tabvid\bin\Debug\EntityFramework.xml
+C:\Users\Admin\source\repos\tabvid\tabvid\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Admin\source\repos\tabvid\tabvid\obj\Debug\tabvid.csproj.CopyComplete
